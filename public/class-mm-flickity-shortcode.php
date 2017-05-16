@@ -115,7 +115,7 @@ class MM_Flickity_Shortcode {
                     'title' => get_post_meta( $post_id, 'default-thumbnail-title', true )
                 );
                 ?>
-                <div class="carousel-cell<?php echo  esc_attr( $cell_class ); ?>" style="background-image: url( <?php echo $d_img['src']; ?> )">
+                <div class="carousel-cell<?php echo  esc_attr( $cell_class ); ?>" <?php echo $d_img['src'] ? 'style="background-image: url(' . $d_img['src'] . ')";' : ''; ?>>
                     <img src="<?php the_post_thumbnail_url( $slide_size ) ?>" class="mm-flickity-carousel__cell-image" alt="<?php echo get_the_title(); ?>">
                     <?php  #the_post_thumbnail( 'full', array( 'class' => 'attachemnt-full mm-flickity-carousel__cell-image')); ?>
                     <div class="mm-flickity-carousel__cell-title <?php echo $title_class ?>">

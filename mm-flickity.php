@@ -62,6 +62,7 @@ class MM_Flickity {
     function __construct() {
         require_once('includes/mm-slider-options.php');
         require_once('admin/class-mm-flickity-metabox.php');
+        require_once('admin/class-mm-flickity-table-list.php');
         require_once('public/class-mm-flickity-shortcode.php');
         require_once('public/widgets/class-mm-flickity-widget.php');
     }
