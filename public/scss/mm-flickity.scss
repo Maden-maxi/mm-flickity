@@ -1,0 +1,27 @@
+.mm-flickity-carousel{
+  &__cell{
+    background-size: cover;
+    position: relative;
+    &-title{
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+      h3{
+        background-color: rgba(0,0,0,.7);
+        margin: 0;
+        color: #fff;
+      }
+    }
+    &_gutter{
+      padding: 0 10px;
+    }
+    @for $i from 1 through 6 {
+      &_col-#{$i}{
+        width: 100% / $i;
+      }
+    }
+  }
+}
