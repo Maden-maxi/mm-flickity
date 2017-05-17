@@ -64,6 +64,18 @@ function mm_slider_options() {
             'description' => __( 'Unloaded images have no size, which can throw off cell positions. To fix this, the imagesLoaded option re-positions cells once their images have loaded.', 'mm-flickity' )
         ),
         array(
+            'name' => 'lazyLoad',
+            'type' => 'checkbox',
+            'label' => __( 'Lazy Load', 'mm-flickity' ),
+            'description' => __( 'Loads cell images when a cell is selected.', 'mm-flickity' )
+        ),
+        array(
+            'name' => 'bgLazyLoad',
+            'type' => 'checkbox',
+            'label' => __( 'Lazy Load Background', 'mm-flickity' ),
+            'description' => __( 'Loads cell background image when a cell is selected.', 'mm-flickity' )
+        ),
+        array(
             'name' => 'rightToLeft',
             'type' => 'checkbox',
             'label' => __( 'Right To Left', 'mm-flickity' ),

@@ -66,6 +66,7 @@ class MM_Flickity_Shortcode {
         $options = array();
         foreach ( $fields as $field )
             $options[$field['name']] = get_term_meta( $atts['slider'],  $field['name'], true );
+
         $options['cellSelector'] = '.carousel-cell';
         $gutter = $options['gutter'];
         $slide_size = $options['slideSize'];
@@ -114,10 +115,24 @@ class MM_Flickity_Shortcode {
                     'alt' => get_post_meta( $post_id, 'default-thumbnail-alt', true ),
                     'title' => get_post_meta( $post_id, 'default-thumbnail-title', true )
                 );
+
+                $bgi = !empty( $d_img['src'] ) ? 'style="background-image: url(' . $d_img['src'] . ')"' : '';
+                printf('<div class="carousel-cell %s" %s>', esc_attr( $cell_class ), $bgi);
                 ?>
-                <div class="carousel-cell<?php echo  esc_attr( $cell_class ); ?>" <?php echo $d_img['src'] ? 'style="background-image: url(' . $d_img['src'] . ')";' : ''; ?>>
-                    <img src="<?php the_post_thumbnail_url( $slide_size ) ?>" class="mm-flickity-carousel__cell-image" alt="<?php echo get_the_title(); ?>">
-                    <?php  #the_post_thumbnail( 'full', array( 'class' => 'attachemnt-full mm-flickity-carousel__cell-image')); ?>
+
+                    <?php
+                    if( $options['lazyLoad'] == true )
+                        printf(
+                            '<img class="mm-flickity-carousel__cell-image" src="" data-flickity-lazyload="%s">',
+                            get_the_post_thumbnail_url( $post_id, $slide_size )
+                        );
+                    else
+                        printf(
+                            '<img class="mm-flickity-carousel__cell-image" src="%s" alt="%s">',
+                            get_the_post_thumbnail_url( $post_id, $slide_size ),
+                            get_the_title()
+                            );
+                    ?>
                     <div class="mm-flickity-carousel__cell-title <?php echo $title_class ?>">
                         <?php the_title( '<h3>', '</h3>' ); ?>
                     </div>
